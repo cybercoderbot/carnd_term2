@@ -56,6 +56,6 @@ The results for input files `sample-laser-radar-measurement-data-1.txt` and `sam
 
 | Test 1 RMSE            | Test 2 RMSE                                           |
 | -------------------------- |----------------------------------------------------------|
-| px=0.065165, py=0.06053<br>vx=0.533212, vy=0.544193  |px=0.18566, py=0.190271<br>vx=0.47452, vy=0.811142  |
+| px=0.065165, py=0.06053<br>vx=0.533212, vy=0.54419  |px=0.18566, py=0.19027<br>vx=0.47452, vy=0.81114  |
 
 
