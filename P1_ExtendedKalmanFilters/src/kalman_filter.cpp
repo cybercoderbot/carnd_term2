@@ -39,9 +39,9 @@ void KalmanFilter::Update(const VectorXd &z) {
   To have a better code and increased performance, try to prevent duplicate calculations like P_*Ht
   Furthermore you have already defined PHt which can be used here.
   **/
-  MatrixXd S = H_ * P_ * Ht + R_;
-  MatrixXd Si = S.inverse();
   MatrixXd PHt = P_ * Ht;
+  MatrixXd S = H_ * PHt + R_;
+  MatrixXd Si = S.inverse();
   MatrixXd K = PHt * Si;
 
   //new estimate
