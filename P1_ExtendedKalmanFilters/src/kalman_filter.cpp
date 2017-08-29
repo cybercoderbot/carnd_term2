@@ -1,4 +1,5 @@
 #include "kalman_filter.h"
+#include <math.h> 
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
@@ -72,12 +73,14 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   desired range.
   **/
   VectorXd y = z - z_pred;
-
-  double PI = 3.1415926;   
-  for(int i=0; i<y.size(); i++){
-	  while (y[i] < -1 * PI) y[i] = y[i] + 2 * PI;
-	  while (y[i] > PI ) y[i] = y[i] - 2 * PI;
-  }
+  
+  while (y(1) > M_PI){
+          y(1) -= 2 * M_PI;
+      }
+      while (y(1) < -M_PI){
+          y(1) += 2 * M_PI;
+      }
+      
   MatrixXd Ht = H_.transpose();
   MatrixXd PHt = P_ * Ht;
   MatrixXd S = H_ * PHt + R_;
