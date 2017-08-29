@@ -72,7 +72,12 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   desired range.
   **/
   VectorXd y = z - z_pred;
-  while (y < ) this.orientation += 2 * PI;
+
+  double PI = 3.1415926;   
+  for(int i=0; i<y.size(); i++){
+	  while (y[i] < -1 * PI) y[i] = y[i] + 2 * PI;
+	  while (y[i] > PI ) y[i] = y[i] - 2 * PI;
+  }
   MatrixXd Ht = H_.transpose();
   MatrixXd PHt = P_ * Ht;
   MatrixXd S = H_ * PHt + R_;
