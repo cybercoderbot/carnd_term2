@@ -26,6 +26,8 @@ Run it: `./ExtendedKF path/to/input.txt path/to/output.txt`. You can find some s
 
 `./ExtendedKF ../data/sample-laser-radar-measurement-data-2.txt ./output_2.txt`
 
+`./ExtendedKF ../data/obj_pose-laser-radar-synthetic-input.txt ./output_3.txt`
+
 
 ## Prediction Results
 The results for input files `sample-laser-radar-measurement-data-1.txt` and `sample-laser-radar-measurement-data-2.txt` are:
