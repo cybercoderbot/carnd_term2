@@ -14,11 +14,7 @@ PID::PID() {}
 PID::~PID() {}
 
 
-void PID::Init(double Kp, double Ki, double Kd) {
-//   this->Kp = Kp;
-//   this->Ki = Ki;
-//   this->Kd = Kd;
-  
+void PID::Init(double Kp, double Ki, double Kd) {  
   PID::Kp = Kp;
   PID::Ki = Ki;
   PID::Kd = Kd;
@@ -79,6 +75,9 @@ void PID::UpdateError(double cte) {
   }
 }
 
+/*
+Compute total error
+*/
 double PID::TotalError() {
   return fabs(p_error) + fabs(i_error) + fabs(d_error);
 }
