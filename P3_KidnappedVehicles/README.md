@@ -1,7 +1,6 @@
 # Kidnapped Vehicle Localization
 
 
---
 ### Objective
 In this project, a real-time particle filter is implemented to localize the vehicle with the sensor data.
 
