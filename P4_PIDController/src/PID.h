@@ -26,8 +26,13 @@ public:
   int step, param_index;
   // number of steps to allow changes to settle, then to evaluate error
   int n_settle_steps, n_eval_steps;
-  double total_error, best_error;
-  bool tried_adding, tried_subtracting, yes_i_wanna_twiddle;
+  bool tried_adding, tried_subtracting, twiddle;
+  
+//   double best_error = 999.9;
+  double total_error;
+  double best_error = std::numeric_limits<double>::max();
+  int last_optimize_index = 0;
+  int current_state = 0; // possible values 0, 1, 2, 3
 
 
   /*
