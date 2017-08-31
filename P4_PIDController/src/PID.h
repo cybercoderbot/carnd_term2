@@ -23,11 +23,7 @@ public:
   * Twiddle variables
   */
   std::vector<double> dp;
-  int step, param_index;
-  // number of steps to allow changes to settle, then to evaluate error
-  int n_settle_steps, n_eval_steps;
-  bool tried_adding, tried_subtracting, twiddle;
-  
+
 //   double best_error = 999.9;
   double total_error;
   double best_error = std::numeric_limits<double>::max();
@@ -60,10 +56,6 @@ public:
   */
   double TotalError();
 
-  /*
-  * Convenience function for adding amount (dp) to a PID controller parameter based on index
-  */
-  void AddToParameterAtIndex(int index, double amount);
 };
 
 #endif /* PID_H */
