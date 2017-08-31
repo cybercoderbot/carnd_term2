@@ -14,7 +14,11 @@ PID::PID() {}
 PID::~PID() {}
 
 
-void PID::Init(double Kp, double Ki, double Kd) {  
+void PID::Init(double Kp, double Ki, double Kd) {
+//   this->Kp = Kp;
+//   this->Ki = Ki;
+//   this->Kd = Kd;
+  
   PID::Kp = Kp;
   PID::Ki = Ki;
   PID::Kd = Kd;
@@ -35,17 +39,17 @@ void PID::UpdateError(double cte) {
 
     switch (current_state) {
       case 0: {
-        p[last_optimize_index] += dp[last_optimize_index];
+        p[param_index] += dp[param_index];
         current_state = 1;
         break;
       }
       case 1: {
         if (fabs(cte) < fabs(best_error)) {
           best_error = cte;
-          dp[last_optimize_index] *= 1.1;
+          dp[param_index] *= 1.1;
           current_state = 3;
         } else {
-          p[last_optimize_index] -= 2 * dp[last_optimize_index];
+          p[param_index] -= 2 * dp[param_index];
           current_state = 2;
         }
         break;
@@ -53,16 +57,16 @@ void PID::UpdateError(double cte) {
       case 2: {
         if (fabs(cte) < fabs(best_error)) {
           best_error = cte;
-          dp[last_optimize_index] *= 1.1;
+          dp[param_index] *= 1.1;
         } else {
-          p[last_optimize_index] += dp[last_optimize_index];
-          dp[last_optimize_index] *= 0.9;
+          p[param_index] += dp[param_index];
+          dp[param_index] *= 0.9;
         }
         current_state = 3;
         break;
       }
       case 3: {
-        last_optimize_index = (last_optimize_index + 1) % 2;
+        param_index = (param_index + 1) % 2;
         current_state = 0;
         break;
       }
@@ -75,9 +79,6 @@ void PID::UpdateError(double cte) {
   }
 }
 
-/*
-Compute total error
-*/
 double PID::TotalError() {
   return fabs(p_error) + fabs(i_error) + fabs(d_error);
 }

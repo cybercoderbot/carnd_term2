@@ -23,13 +23,12 @@ public:
   * Twiddle variables
   */
   std::vector<double> dp;
-
+  
 //   double best_error = 999.9;
   double total_error;
   double best_error = std::numeric_limits<double>::max();
-  int last_optimize_index = 0;
+  int param_index = 0;
   int current_state = 0; // possible values 0, 1, 2, 3
-
 
   /*
   * Constructor
@@ -56,6 +55,10 @@ public:
   */
   double TotalError();
 
+  /*
+  * Convenience function for adding amount (dp) to a PID controller parameter based on index
+  */
+  void AddToParameterAtIndex(int index, double amount);
 };
 
 #endif /* PID_H */
