@@ -1,6 +1,8 @@
 #ifndef PID_H
 #define PID_H
-#include <vector>
+
+#include <iostream>
+#include <cmath>
 
 class PID {
 public:
@@ -17,18 +19,6 @@ public:
   double Kp;
   double Ki;
   double Kd;
-  
-  
-  /*
-  * Twiddle variables
-  */
-  std::vector<double> dp;
-  
-//   double best_error = 999.9;
-  double total_error;
-  double best_error = std::numeric_limits<double>::max();
-  int param_index = 0;
-  int current_state = 0; // possible values 0, 1, 2, 3
 
   /*
   * Constructor
@@ -55,10 +45,10 @@ public:
   */
   double TotalError();
 
-  /*
-  * Convenience function for adding amount (dp) to a PID controller parameter based on index
-  */
-  void AddToParameterAtIndex(int index, double amount);
+  double best_error = std::numeric_limits<double>::max();
+  int param_index = 0;
+  int current_state = 0; // possible values 0, 1,2, 3
+
 };
 
 #endif /* PID_H */

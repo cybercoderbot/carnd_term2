@@ -1,7 +1,4 @@
 #include "PID.h"
-#include <math.h>
-#include <iostream>
-
 
 using namespace std;
 
@@ -13,16 +10,12 @@ PID::PID() {}
 
 PID::~PID() {}
 
+const double tolerance = 0.01;
 
 void PID::Init(double Kp, double Ki, double Kd) {
-//   this->Kp = Kp;
-//   this->Ki = Ki;
-//   this->Kd = Kd;
-  
   PID::Kp = Kp;
   PID::Ki = Ki;
   PID::Kd = Kd;
-  
   p_error = 0.1;
   i_error = 0.001;
   d_error = 0.1;
@@ -32,10 +25,7 @@ void PID::UpdateError(double cte) {
   double p[] = {Kp, Kd};
   double dp[] = {p_error, d_error};
   
-  const double thresh = 0.01;
-  
-  // loop for twiddle
-  if (TotalError() > thresh) {
+  if (TotalError() > tolerance) {
 
     switch (current_state) {
       case 0: {
@@ -81,5 +71,6 @@ void PID::UpdateError(double cte) {
 
 double PID::TotalError() {
   return fabs(p_error) + fabs(i_error) + fabs(d_error);
+  //return -Kp * p_error - Ki * i_error - Kd * d_error;
 }
 
