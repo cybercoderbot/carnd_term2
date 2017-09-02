@@ -4,11 +4,6 @@
 
 In this project, a model predictive control modes is implemented to navigate the car drives around a simulator track. The model computes steering and acceleration commands and sends back to the simulator. The simulator provides a feed of values containing the position of the car, its speed and heading direction. It also provides the coordinates of waypoints along a reference trajectory that the car is to follow. Additionally, there's a latency between actuations commands on top of the connection latency.
 
-
-## Rubric Points
-
-- **The Model**: *Student describes their model in detail. This includes the state, actuators and update equations.*
-
 ## The Model
 
 The model includes the vehicle's x and y coordinates, orientation angle (psi), and velocity, as well as the cross-track error and psi error (epsi). 
