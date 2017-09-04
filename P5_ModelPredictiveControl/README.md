@@ -17,9 +17,7 @@ The model includes the vehicle's x and y coordinates, orientation angle (psi), a
   
 Actuator outputs are acceleration and delta (steering angle). The model combines the state and actuations from the previous timestep to calculate the state for the current timestep:
 
-![equations](./result/equation1.png=200x100)
-
-<img src="./result/equation1.png" width="200">
+<img src="./result/equation1.png" width="600">
 
 
 
