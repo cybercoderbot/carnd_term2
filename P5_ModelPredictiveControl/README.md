@@ -19,6 +19,8 @@ Actuator outputs are acceleration and delta (steering angle). The model combines
 
 ![equations](./result/equation1.png=200x100)
 
+<img src="./result/equation1.png" width="200">
+
 
 
 **Timestep Length and Elapsed Duration**
